@@ -39,12 +39,6 @@
 			"revisionTime": "2017-11-13T18:07:20Z"
 		},
 		{
-			"checksumSHA1": "KBZAPkgG/bO26yf2KYKLZPyQw9k=",
-			"path": "github.com/jinzhu/gorm",
-			"revision": "0a51f6cdc55d1650d9ed3b4c13026cfa9133b01e",
-			"revisionTime": "2017-10-10T13:28:39Z"
-		},
-		{
 			"checksumSHA1": "w5RcOnfv5YDr3j2bd1YydkPiZx4=",
 			"path": "github.com/mattn/go-isatty",
 			"revision": "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c",
@@ -75,5 +69,9 @@
 			"revisionTime": "2018-01-09T11:43:31Z"
 		}
 	],
-	"rootPath": "gitlab.com/lscortesc/go-gin"
+	"rootPath": "gitlab.com/lscortesc/go-gin",
+	"heroku": {
+		"install" : [ "./..." ],
+		"goVersion": "go1.9"
+	}
 }
