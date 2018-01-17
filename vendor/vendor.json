@@ -1,7 +1,19 @@
 {
 	"comment": "",
+	"heroku": {
+		"goVersion": "go1.9",
+		"install": [
+			"./..."
+		]
+	},
 	"ignore": "test",
 	"package": [
+		{
+			"checksumSHA1": "mrz/kicZiUaHxkyfvC/DyQcr8Do=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "ecdeabc65495df2dec95d7c4a4c3e021903035e5",
+			"revisionTime": "2017-10-02T20:02:53Z"
+		},
 		{
 			"checksumSHA1": "QeKwBtN2df+j+4stw3bQJ6yO4EY=",
 			"path": "github.com/gin-contrib/sse",
@@ -45,6 +57,18 @@
 			"revisionTime": "2017-11-07T05:05:31Z"
 		},
 		{
+			"checksumSHA1": "LuFv4/jlrmFNnDb/5SCSEPAM9vU=",
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": "792786c7400a136282c1664665ae0a8db921c6c2",
+			"revisionTime": "2016-01-10T10:55:54Z"
+		},
+		{
+			"checksumSHA1": "uyVU5fRfEK17QZuODRjeZX8zDqg=",
+			"path": "github.com/stretchr/testify/assert",
+			"revision": "87b1dfb5b2fa649f52695dd9eae19abe404a4308",
+			"revisionTime": "2017-12-31T12:27:32Z"
+		},
+		{
 			"checksumSHA1": "s+pk+d9XCjBkyUdHOwdB39FHaPQ=",
 			"path": "github.com/ugorji/go/codec",
 			"revision": "9831f2c3ac1068a78f50999a30db84270f647af6",
@@ -69,9 +93,5 @@
 			"revisionTime": "2018-01-09T11:43:31Z"
 		}
 	],
-	"rootPath": "gitlab.com/lscortesc/go-gin",
-	"heroku": {
-		"install" : [ "./..." ],
-		"goVersion": "go1.9"
-	}
+	"rootPath": "gitlab.com/lscortesc/go-gin"
 }
