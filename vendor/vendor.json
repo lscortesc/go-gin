@@ -69,5 +69,9 @@
 			"revisionTime": "2018-01-09T11:43:31Z"
 		}
 	],
-	"rootPath": "gitlab.com/lscortesc/go-gin"
+	"rootPath": "gitlab.com/lscortesc/go-gin",
+	"heroku": {
+		"install" : [ "./..." ],
+		"goVersion": "go1.9"
+	}
 }
