@@ -5,11 +5,14 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"gitlab.com/lscortesc/go-gin/db"
 	"gitlab.com/lscortesc/go-gin/models"
 )
 
 func setupRouter() *gin.Engine {
-	// Disable Console Color
+
+	db.Setup()
+
 	r := gin.Default()
 
 	// test
