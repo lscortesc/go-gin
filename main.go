@@ -1,34 +1,34 @@
 package main
 
 import (
-	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"gitlab.com/lscortesc/go-gin/controllers"
 	"gitlab.com/lscortesc/go-gin/db"
 	"gitlab.com/lscortesc/go-gin/models"
 )
 
 func setupRouter() *gin.Engine {
 
-	db.Setup()
-
 	r := gin.Default()
 
-	// test
-	r.GET("/", func(c *gin.Context) {
-		res := models.APIResponse{
-			Status:  http.StatusOK,
-			Message: "Data recover successfully",
-		}
+	// Default
+	defaultCtrl := new(controllers.DefaultController)
+	r.GET("/", defaultCtrl.HomeAction)
 
-		res.Response(c)
-	})
+	// Auth
+	authCtrl := new(controllers.AuthController)
+	r.POST("/register", authCtrl.Register)
 
 	return r
 }
 
 func main() {
+
+	db.Setup()
+	makeMigrations()
+
 	r := setupRouter()
 	port := os.Getenv("PORT")
 
@@ -37,4 +37,14 @@ func main() {
 	}
 
 	r.Run(":" + port)
+}
+
+func makeMigrations() {
+	db.GetConnection().AutoMigrate(
+		&models.Country{},
+		&models.Customer{},
+	)
+
+	models.Customer{}.MigrateRelationships(db.GetConnection())
+	models.Country{}.Seed(db.GetConnection())
 }

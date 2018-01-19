@@ -41,8 +41,6 @@ func Setup() {
 	if err != nil {
 		log.Panic(err)
 	}
-
-	defer db.Close()
 }
 
 // GetConnection return the connection to database
