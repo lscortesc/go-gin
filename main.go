@@ -24,6 +24,16 @@ func setupRouter() *gin.Engine {
 	return r
 }
 
+func makeMigrations() {
+	db.GetConnection().AutoMigrate(
+		&models.Country{},
+		&models.Customer{},
+	)
+
+	models.Customer{}.MigrateRelationships(db.GetConnection())
+	models.Country{}.Seed(db.GetConnection())
+}
+
 func main() {
 
 	db.Setup()
@@ -37,14 +47,4 @@ func main() {
 	}
 
 	r.Run(":" + port)
-}
-
-func makeMigrations() {
-	db.GetConnection().AutoMigrate(
-		&models.Country{},
-		&models.Customer{},
-	)
-
-	models.Customer{}.MigrateRelationships(db.GetConnection())
-	models.Country{}.Seed(db.GetConnection())
 }

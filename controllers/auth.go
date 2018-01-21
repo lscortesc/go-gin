@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
+	"gitlab.com/lscortesc/go-gin/db"
 	"gitlab.com/lscortesc/go-gin/forms"
 	"gitlab.com/lscortesc/go-gin/models"
 )
@@ -19,12 +20,23 @@ func (ctrl AuthController) Register(c *gin.Context) {
 	var customer models.Customer
 
 	if c.BindJSON(&registerForm) != nil {
-		response.Response(c, c.Errors, 422, "Data Not Valid")
+		response.Response(
+			c,
+			response.GetErrors(c),
+			422,
+			"Data Not Valid",
+		)
+		return
+	}
+
+	// Check Unique Email
+	if !db.Unique(registerForm.Email, "email", &customer) {
+		response.Response(c, gin.H{"errors": "Error: Email in use"}, 422, "Error at register customer")
 		return
 	}
 
 	if customer, err = customerModel.Register(registerForm); err != nil {
-		response.Response(c, gin.H{"error": err.Error()}, 400, "Error at register customer")
+		response.Response(c, gin.H{"error": err.Error()}, 422, "Error at register customer")
 		return
 	}
 

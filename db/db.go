@@ -43,6 +43,16 @@ func Setup() {
 	}
 }
 
+// Unique Search
+func Unique(value interface{}, column string, model interface{}) bool {
+
+	if !db.Where(column+" = ?", value.(string)).First(model).RecordNotFound() {
+		return false
+	}
+
+	return true
+}
+
 // GetConnection return the connection to database
 func GetConnection() *gorm.DB {
 	return db

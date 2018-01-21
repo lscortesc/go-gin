@@ -47,6 +47,6 @@ func (c Customer) Register(data forms.RegisterForm) (Customer, error) {
 
 // HashPassword to Customer Register
 func HashPassword(pass string) (string, error) {
-	bytes, err := bcrypt.GenerateFromPassword([]byte(pass), 14)
+	bytes, err := bcrypt.GenerateFromPassword([]byte(pass), bcrypt.DefaultCost)
 	return string(bytes), err
 }
